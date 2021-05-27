@@ -1,6 +1,6 @@
 var mongoose = require("mongoose");
-const { DateTime } = require("luxon");
 var Schema = mongoose.Schema;
+const { DateTime } = require("luxon");
 
 var BookInstanceSchema = new Schema({
   book: { type: Schema.Types.ObjectId, ref: "Book", required: true },
@@ -20,6 +20,10 @@ BookInstanceSchema.virtual("url").get(function () {
 
 BookInstanceSchema.virtual("due_back_formatted").get(function () {
   return DateTime.fromJSDate(this.due_back).toLocaleString(DateTime.DATE_MED);
+});
+
+BookInstanceSchema.virtual("due_back_yyyy_mm_dd").get(function () {
+  return DateTime.fromJSDate(this.due_back).toISODate();
 });
 
 module.exports = mongoose.model("BookInstance", BookInstanceSchema);
