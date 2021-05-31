@@ -11,7 +11,9 @@ var compression = require("compression");
 var helmet = require("helmet");
 
 var app = express();
-var dev_db_url = "mongodb://127.0.0.1:27017/my_database";
+//var dev_db_url = "mongodb://127.0.0.1:27017/my_database";
+var dev_db_url =
+  "mongodb+srv://catalog_lib_usr:DfohltQcCgQixW4P@cluster0.b7w4a.mongodb.net/catalog_lib?retryWrites=true&w=majority";
 var mongoDB = process.env.MONGODB_URI || dev_db_url;
 mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true });
 
